@@ -1,0 +1,69 @@
+/**
+ * @file {{fileName}}
+ * @author {{author}}
+ * Created on {{time}}.
+ */
+define([
+  'marionette',
+  'templates',
+  'handlebars',
+  'common',
+  'common/urls',
+  '{{modelUrl}}'
+], function (Marionette, templates, Handlebars, Common, Urls, {{modelName}}) {
+  'use strict';
+  var model = new {{modelName}}();
+{{#if isLayoutView}}
+  return Marionette.LayoutView.extend({
+{{/if}}
+{{#if isCompositeView}}
+  return Marionette.CompositeView.extend({
+{{/if}}
+{{#if isItemView}}
+  return Marionette.ItemView.extend({
+{{/if}}
+    template: Handlebars.compile(templates.{{modelName}}),
+    model: model,
+    className: '',
+    events: {
+      'click .class': 'onDemoEvent',
+      'click #id': 'onIdEvent'
+    },
+    initialize: function () {
+      this.listenTo(this.model, 'change', this.render);
+      {{#if isItemView}}
+      this.render();
+      {{/if}}
+
+      // Todo
+    },
+    {{#if isItemView}}
+    render: function () {
+      var self = this;
+      //Todo
+    },
+    {{/if}}
+    {{#if isCompositeView}}
+    onRender: function () {
+      // Todo
+    },
+    {{/if}}
+    {{#if isLayoutView}}
+    onRender: function () {
+          // Todo
+    },
+    {{/if}}
+    onShow: function () {
+      // Todo
+    },
+    someEvent: function () {
+      // Todo
+    },
+    onDemoEvent: function () {
+      // Todo
+    },
+    onIdEvent: function () {
+      // Todo
+    }
+  });
+});

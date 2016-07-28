@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/main.css" />
+<!--    <link rel="stylesheet" type="text/css" href="dist/css/bootstrap-theme.css">-->
+
+</head>
+<body>
+
+
+
+<ng-include src=" '/views/common/header.html'"></ng-include>
+<!--<div ng-include="'/views/header.html'"></div>-->
+<!--这里就是渲染其他视图的地方-->
+    <div data-ui-view=""></div>
+<!--<ng-include src=" 'views/common/footer.html' "></ng-include>-->
+</body>
+<script type="text/javascript" src="lib/require.js" data-main="main.js"></script>
+</html>

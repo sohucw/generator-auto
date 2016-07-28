@@ -1,0 +1,53 @@
+/**
+ * @file {{fileName}}
+ * @author {{author}}
+ * Created on {{time}}.
+ */
+define([
+    'backbone',
+    'common',
+    'common/urls'
+], function (Backbone, Common, Urls) {
+    'use strict';
+    var url = Urls.offLineJobList;
+    return Backbone.Model.extend({
+        url: url,
+        initialize: function () {
+            this.fetch({});
+        },
+        fetch: function (opts) {
+            var self = this;
+            var options = {
+                url: url
+            };
+            options.params = {
+                username: '',
+                keyword: opts.keyword || '',
+                page: opts.page || 1,
+                size: 10,
+                oType: opts.oType || 'SPACE',
+                fType: 'NAME',
+                oDirection: opts.oDirection || 'DESC'
+            };
+            Common.ajaxJsonPost(options, function (data) {
+                self.updateModel(data);
+            });
+        },
+        defaults: {
+
+        },
+        updateModel: function (data) {
+            this.set({
+                data: data.data,
+                totalCount: data.totalCount,
+                currentPage: data.currentPage,
+                pageSize: data.pageSize,
+                totalPage: data.totalPage
+            });
+        },
+        parse: function (response) {
+            var data = Common.dealResponse(response);
+            return data;
+        }
+    });
+});

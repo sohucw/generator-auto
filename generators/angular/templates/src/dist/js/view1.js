@@ -1,0 +1,1 @@
+define(["angular"],function(n){return function(n,i,e){n.info="kenko",i.get("views/test.html").success(function(i){n.info="vivi"});var t=0;e(function(){t++,n.info=t},1e3)}});
