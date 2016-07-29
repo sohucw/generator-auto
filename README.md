@@ -35,24 +35,24 @@
 
 First, install [Yeoman](http://yeoman.io) and generator-auto using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
-```bash
+
 npm install -g yo
 npm install -g generator-auto
-```
+
 
 Then generate your new project:
  
 运行yo hulk:create
 
-  ```bash
+`
   yo auto:create
-  ```
+`
   根据目前做的项目去 通过命令行的形式去快速构建文件  提供开发效率
   
 运行 yo auto:backbone
- ```bash
+`
   yo auto:backbone
-  ```
+`
  运行这个命令 生成 backbone + requirejs 的前端项目架构
   MVC味道更浓，使用自定义的template模版库 适合复杂的前端业务
 这个时候回自动构建 基于 Backbone Require 的 工程   这个时候回创建 temp文件夹 它下面的目录结构 如下
@@ -63,9 +63,10 @@ Then generate your new project:
     
 运行hulk:angular
     
-   ```bash
+
     yo auto:angular
-    ```
+    
+
  运行这个命令 生成 angular + requirejs 的前端项目架构
  
  强大的数据双向绑定
@@ -75,19 +76,19 @@ Then generate your new project:
  不过 angular  引入的js较大，对移动端来说有点吃不消 语法复杂，学习成本高
 
 运行 auto:director  
-    
-   ```bash
+ `
     yo auto:director
     
     npm install
     
     gulp 
-    ```
+ `   
+ 
     访问 http://localhost:8000/#company
+    
  运行这个命令 生成 director + requirejs 的前端项目架构
 
-### 这个方案最灵活  针对业务简单，只是路由分别切换到几个子模块，每个子模块基本都是拉一次数据，
-             展示给用户，很少用户交互从而修改数据，改变视图的功能
+ 这个方案最灵活  针对业务简单，只是路由分别切换到几个子模块，每个子模块基本都是拉一次数据， 展示给用户，很少用户交互从而修改数据，改变视图的功能
 
 ## Getting To Know Yeoman
 
