@@ -36,7 +36,7 @@ var AnGenerator =  generators.NamedBase.extend({
     var prompts = [{
       type: 'input',
       name: 'resourcesPath',
-      message: 'The resources path that you place javascript and html template files.',
+      message: 'The resources name that you project.',
       store: true,
       default: ''
     }];
@@ -49,14 +49,20 @@ var AnGenerator =  generators.NamedBase.extend({
 
   writing : function () {
     if (!this.resourcesPath) {
-      this.log(chalk.red('The resourcesPath argument is required'));
+      this.log(chalk.red('The project name argument is required'));
        return
     }
+
     this.fs.copy(
+      this.templatePath('app'),
+      this.destinationPath(this.resourcesPath +'/aap/')
+    );
+
+ /*   this.fs.copy(
       this.templatePath('src'),
       __dirname +'/' + this.resourcesPath,
       {}
-    );
+    );*/
 
   },
   install: function () {

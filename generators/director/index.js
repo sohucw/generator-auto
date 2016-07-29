@@ -7,6 +7,7 @@
 var chalk = require('chalk');
 var yosay = require('yosay');
 var _ = require('lodash');
+var mkdirp = require('mkdirp');
 var handlebars = require('handlebars');
 var generators = require('yeoman-generator');
 var path = require('path');
@@ -36,9 +37,9 @@ var AnGenerator =  generators.NamedBase.extend({
     var prompts = [{
       type: 'input',
       name: 'resourcesPath',
-      message: 'The resources path that you project.',
+      message: 'The resources name that you project.',
       store: true,
-      default: ''
+      default: 'common'
     }];
     return this.prompt(prompts).then(function (props) {
       // To access props later use this.props.someAnswer;
@@ -49,14 +50,21 @@ var AnGenerator =  generators.NamedBase.extend({
 
   writing : function () {
     if (!this.resourcesPath) {
-      this.log(chalk.red('The resourcesPath argument is required'));
+      this.log(chalk.red('The prject name argument is required'));
       return
     }
+
     this.fs.copy(
       this.templatePath('app'),
-      __dirname +'/' + this.resourcesPath,
-      {}
+      this.destinationPath(this.resourcesPath +'/aap/')
     );
+  //  this.absoluteViewJsFilePath = this.resourcesPath + 'app/';
+  //  this.write(this.absoluteViewJsFilePath, this.templatePath('app'));
+   /* this.fs.copy(
+      this.templatePath('app'),
+      this.resourcesPath,
+      {}
+    );*/
 
   },
   install: function () {
